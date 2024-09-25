@@ -10,7 +10,7 @@
         }
 
         body {
-            background-color: #1e1e1e;
+            background-color: black;
             color: #d4d4d4;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
@@ -43,10 +43,11 @@
         }
 
         .sidenav h1 {
-            color: #9cdcfe;
-            font-size: 1.8em;
-            text-align: center;
+            color: lightblue;
+            font-size: 2em;
+            text-align: left;
             margin-bottom: 20px;
+            padding-left: 5%;
         }
 
         .sidenav .contact-info {
@@ -74,9 +75,18 @@
             transition: color 0.3s;
         }
 
-        .sidenav a:hover {
-            color: #9cdcfe;
+        .menu a {
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 1.2em;
+            color: #dcdcaa;
+            display: block;
+            transition: color 0.3s;
+        }
+
+        .menu a:hover {
             background-color: #333;
+            font-size: 1.4em;
         }
 
         .main {
@@ -130,14 +140,14 @@
             line-height: 1.6;
         }
 
-        .skills {
+        .topics {
             list-style-type: none;
             padding: 0;
             display: flex;
             flex-wrap: wrap;
         }
 
-        .skills li {
+        .topics li {
             display: inline-block;
             margin: 5px;
             background: #5a5959;
@@ -156,11 +166,12 @@
         .skills-list li, .language-list li {
             width: 45%;
             margin-bottom: 10px;
+            font-size: 1em;
         }
 
         footer {
             margin-top: 50px;
-            background: linear-gradient(to right, #252526, #1e1e1e);
+            background: rgb(0, 0, 0);
             text-align: center;
             padding: 10px 0;
             position: fixed; 
@@ -172,6 +183,7 @@
 
         footer p {
             margin: 0;
+            padding-left: 20%;
             color: #808080;
         }
 
@@ -224,19 +236,25 @@
 
 <div class="sidenav">
     <h1>Eng-Shen Tu</h1>
-    <a href="#about">About Me</a>
-    <a href="#education">Education</a>
-    <a href="#research">Research Experience</a>
-    <a href="#publications">Publications</a>
-    <a href="#work">Work Experience</a>
-    <a href="#awards">Awards and Honors</a>
-    <a href="#extracurricular">Other stuff</a>
-    <a href="#skills">Technical Skills</a>
+    <h1>(James)</h1>
+    <div class="menu">
+        <a href="#about">About Me</a>
+        <a href="#education">Education</a>
+        <a href="#research">Research Experience</a>
+        <a href="#publications">Publications</a>
+        <a href="#work">Work Experience</a>
+        <a href="#awards">Awards and Honors</a>
+        <a href="#extracurricular">Other stuff</a>
+        <a href="#skills">Technical Skills</a>
+    </div>
 
     <div class="contact-info" style="position: absolute; bottom: 0; text-align: left; padding-left: 5%;">
-        Email: <a href="mailto:jamestu6301@gmail.com">jamestu6301@gmail.com</a>
-        LinkedIn: <a href="https://www.linkedin.com/in/james-tu-ncku/">Eng-Shen Tu</a>
-        GitHub: <a href="https://github.com/JamesTu-jtjt">JamesTu-jtjt</a>
+        Email: 
+        <a href="mailto:jamestu6301@gmail.com">jamestu6301@gmail.com</a>
+        LinkedIn: 
+        <a href="https://www.linkedin.com/in/james-tu-ncku/">Eng-Shen Tu</a>
+        GitHub: 
+        <a href="https://github.com/JamesTu-jtjt">JamesTu-jtjt</a>
     </div>
 </div>
 
@@ -256,7 +274,7 @@
                 or DM me on LinkedIn <a href="https://www.linkedin.com/in/eng-shen-tu/">Eng-Shen Tu</a>
                 for collabs on research/side projects!</p>
             <h3>Research Interests:</h3>
-            <ul class="skills">
+            <ul class="topics">
                 <li>Human-Computer Interaction</li>
                 <li>Software Engineering</li>
                 <li>Software Testing and Test Automation</li>
@@ -280,50 +298,45 @@
             <p><strong>Advisor:</strong> Associate Professor Shin-Jie Lee<br>
             March 2022 – September 2024</p>
             <ul>
-                <li><strong>Research Topics:</strong> Software Testing and Test Automation</li>
-                <li>Developed over 20 web crawlers for the Bank SinoPac Industry-Academia Cooperation Project.</li>
-                <li>Completed two independent research projects, leading to first-authored publications 1 and 2 below.</li>
+                <li> Developed over 20 web crawlers for the Bank SinoPac Industry-Academia Cooperation Project.</li>
+                <li> Led independent research project: Input Relation Prompting for Metamorphic Testing on Query-Based Systems => Publication 1 below. </li>
+                <li> Led independent research project: A Clustering-Based Approach for Detecting Low-Contrast Texts on Web Pages at the Granular Character Level => Publication 2 below. </li>
             </ul>
-            <ul class="skills">
-                <li>Python</li>
-                <li>Selenium</li>
-                <li>Docker</li>
-                <li>GitLab</li> 
-                <li>Flask</li>
+            <ul class="topics">
+                <li>Software Engineering</li>
+                <li>Software Development</li>
+                <li>Software Testing</li>
+                <li>Test Automation</li>
+                <li>Metamorphic Testing</li> 
+                <li>Accessibility in UI/UX Design</li>
             </ul>
     
             <h3>Undergraduate Researcher in the Intelligent Knowledge Management Lab, NCKU</h3>
             <p><strong>Advisor:</strong> Professor Hung-Yu Kao<br>
             September 2022 – September 2023</p>
             <ul>
-                <li><strong>Research Topics:</strong> Generative AI and Natural Language Processing (NLP)</li>
                 <li>Led a team to participate in the 2022 NASA International Space Apps Challenge, where we proposed an innovative space-themed text-to-image generator framework while using VGG16 to add features such as content-style modulation, which won us the Better Future Award from MediaTek.</li>
                 <li>Senior Project: Presented a novel approach to fine-tuning Large Language Models for code generation where we investigate the possibility of training weak AIs with feedback from powerful AIs through iterative reinforcement learning. The process can be entirely automated and for the task of text-to-code generation, model performance of the weak AIs improved by as much as 45%.</li>
             </ul>
-            <ul class="skills">
-                <li>Python</li>
-                <li>Pytorch</li>
-                <li>Django</li>
-                <li>Linux</li> 
-                <li>Git</li>
-                <li>OpenCV</li>
+            <ul class="topics">
+                <li>Natural Language Processing (NLP)</li>
+                <li>Generative AI</li>
+                <li>Large Language Models (LLMs)</li>
+                <li>Reinforcement Learning through Feedback</li>
+                <li>LLM Fine-tuning</li>
             </ul>
     
             <h3>Part-Time Research Assistant in the Networked Artificial Intelligence Lab, NCKU</h3>
             <p><strong>Advisor:</strong> Professor Cheng-Te Li<br>
             September 2022 – December 2022</p>
             <ul>
-                <li><strong>Research Topics:</strong> Data Science and Machine Learning</li>
                 <li>Selected to participate in the 2022 IEEE Big Data Cup Trip Destination Prediction Challenge.</li>
                 <li>Proposed a rule-based approach to trip destination prediction, detailed in publication 4 below.</li>
             </ul>
-            <ul class="skills">
+            <ul class="topics">
                 <li>Machine Learning Algorithms</li>
-                <li>Data Cleaning</li>
-                <li>Data Preprocessing</li>
-                <li>Algorithm Development</li>
-                <li>Data Visualization</li> 
                 <li>Exploratory Data Analysis</li>
+                <li>Algorithm Development</li>
             </ul>
     
             <h3>Research Assistant in the Advanced Computer Vision Lab, NCKU</h3>
@@ -334,14 +347,11 @@
                 <li>Took part in developing a lightweight real-time compressed sensing (RTCS) network for hyperspectral image reconstruction from miniaturized satellites, addressing stripe effects and enabling edge-device reconstruction without central server reliance.</li>
                 <li>Designed and conducted 16 sets of experiments across 7 algorithms and peer methods for the RTCS network, highlighting results and findings in co-authored publication 3 below.</li>
             </ul>
-            <ul class="skills">
-                <li>Python</li>
-                <li>Pytorch</li>
-                <li>MATLAB</li>
-                <li>LaTeX</li> 
-                <li>Linux</li>
-                <li>TensorFlow</li>
-                <li>Visio</li>
+            <ul class="topics">
+                <li>Deep Learning</li>
+                <li>Computer Vision</li>
+                <li>Compressed Sensing</li>
+                <li>Hyperspectral Analysis</li> 
             </ul>
     
         </section>
@@ -392,22 +402,22 @@
             <h2>Extracurricular Activities</h2>
     
             <h3>Google Developer Student Club at National Yang Ming Chiao Tung University (GDSC@NYCU)</h3>
-            <p><strong>Role: (Current) Project Leader</strong></p>
+            <p><strong>(Current) Project Leader: Introduction to Research: LLMs and their Applications</strong></p>
     
-            <h3>Harvard Undergraduate Taiwan Leadership Conference in 2022 and 2024</h3>
-            <p><strong>Role: Head Teaching Assistant</strong></p>
+            <h3>Harvard Undergraduate Taiwan Leadership Conference</h3>
+            <p><strong>Head Teaching Assistant (2022, 2024) | Teaching Assistant (2020, 2021, 2023)</strong></p>
 
-            <h3>2024 Harvard World Model United Nations Conference, Taipei</h3>
-            <p><strong>Role: Assistant Chair</strong></p>
+            <h3>Harvard World Model United Nations Conference</h3>
+            <p><strong>Assistant Chair (2024) </strong></p>
     
-            <h3>2021 Hult Prize On-Campus Program at NCKU</h3>
-            <p><strong>Role: Founder and Campus Director</strong></p>
+            <h3>Hult Prize On-Campus Program at NCKU</h3>
+            <p><strong>Founder and Campus Director (2021) </strong></p>
     
             <h3>Blockchain Club at NCKU</h3>
-            <p><strong>Role: Director of Research in 2021</strong> </p>
+            <p><strong>Director of Research (2021) </strong> </p>
 
             <h3>What I do when I'm not coding:</h3>
-            <p><strong>Volleyball, Chess, Music, Casual MUNing </strong></p>
+            <p><strong>Volleyball, Music, Casual MUNing, Chess </strong></p>
     
         </section>
     
