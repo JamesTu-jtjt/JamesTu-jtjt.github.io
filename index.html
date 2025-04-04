@@ -29,34 +29,37 @@
 
         .sidenav {
             height: 100%;
-            width: 250px; 
+            width: 20%; 
             position: fixed;
             top: 0;
             left: 0;
             background-color: #252526;
             padding-top: 20px;
+            padding-left: 3%;
+            padding-right: 3%;
             overflow-x: hidden;
+            font-size: 1.2em;
             transition: width 0.5s;
             z-index: 1000;
         }
 
         .sidenav h1 {
             color: lightblue;
-            font-size: 1.5em;
+            font-size: 1.7em;
             text-align: left;
             margin-bottom: 20px;
-            padding-left: 5%;
+            padding-left: 0%;
         }
 
         .sidenav .contact-info {
             text-align: center;
             margin-bottom: 20px;
+            font-size: 1.2em;
         }
 
         .sidenav .contact-info a {
-            display: block;
             color: #dcdcaa;
-            margin: 5px 0;
+            margin: 0px 0;
             transition: color 0.3s;
         }
 
@@ -67,16 +70,14 @@
         .sidenav a {
             padding: 10px 20px;
             text-decoration: none;
-            font-size: 1em;
             color: #dcdcaa;
-            display: block;
             transition: color 0.3s;
         }
 
         .menu a {
             padding: 5px 20px;
             text-decoration: none;
-            font-size: 1.1em;
+            font-size: 1.2em;
             color: #dcdcaa;
             display: block;
             transition: color 0.3s;
@@ -84,7 +85,7 @@
 
         .menu a:hover {
             background-color: #333;
-            font-size: 1.2em;
+            font-size: 1.3em;
         }
 
         .main {
@@ -296,10 +297,12 @@
 <body>
 
 <div class="sidenav">
-    <h1>Hi, I'm Eng-Shen (James) Tu! </h1>
+    <h1>Eng-Shen (James) Tu </h1>
     <div class="menu">
         <a href="#about">About Me</a>
+        <a href="#updates">Updates</a>
         <a href="#education">Education</a>
+        <a href="#publications">Publications</a>
         <a href="#research">Research Experience</a>
         <a href="#publications">Publications</a>
         <a href="#work">Work Experience</a>
@@ -308,13 +311,10 @@
         <a href="#skills">Technical Skills</a>
     </div>
 
-    <div class="contact-info" style="position: absolute; bottom: 0; text-align: left; padding-left: 5%;">
-        Email: 
-        <a href="mailto:jamestu6301@gmail.com">jamestu6301@gmail.com</a>
-        LinkedIn: 
-        <a href="https://www.linkedin.com/in/james-tu-ncku/">Eng-Shen Tu</a>
-        GitHub: 
-        <a href="https://github.com/JamesTu-jtjt">JamesTu-jtjt</a>
+    <div class="contact-info" style="position: absolute; bottom: 5%; font-size: 1em; text-align: left; padding-left: 1%;">
+        Email: <a href="mailto:jamestu6301@gmail.com"><u>jamestu6301@gmail.com</u></a><br><br>
+        LinkedIn: <a href="https://www.linkedin.com/in/james-tu-ncku/"><u>Eng-Shen Tu</u></a><br><br>
+        GitHub: <a href="https://github.com/JamesTu-jtjt"><u>JamesTu-jtjt</u></a>
     </div>
 </div>
 
