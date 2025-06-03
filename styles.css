@@ -1,0 +1,308 @@
+/* Base styles */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    width: 85%; 
+    position: absolute;
+    top: 0;
+    right: 2%;
+    background-color: black;
+    color: #d4d4d4;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding-right: 3%;
+}
+
+/* Links */
+a {
+    color: #569cd6;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #9cdcfe;
+    text-decoration: underline;
+}
+
+/* Sidebar Navigation */
+.sidenav {
+    height: 100%;
+    width: 22%; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #252526;
+    padding-top: 20px;
+    padding-left: 1%;
+    padding-right: 0%;
+    overflow-x: hidden;
+    font-size: 1.2em;
+    transition: width 0.5s;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidenav h1 {
+    color: lightblue;
+    font-size: 1.5em;
+    text-align: left;
+    margin-bottom: 20px;
+    padding-left: 0%;
+}
+
+.sidenav .contact-info {
+    text-align: left;
+    margin-top: auto;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    font-size: 1em;;
+}
+
+.sidenav .contact-info a {
+    color: #dcdcaa;
+    margin: 0px 0;
+    transition: color 0.3s;
+}
+
+.sidenav .contact-info a:hover {
+    color: #9cdcfe;
+}
+
+.sidenav a {
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #dcdcaa;
+    transition: color 0.3s;
+}
+
+/* Menu */
+.menu a {
+    padding: 5px 20px;
+    text-decoration: none;
+    font-size: 1.2em;
+    color: #dcdcaa;
+    display: block;
+    transition: color 0.3s;
+}
+
+.menu a:hover {
+    background-color: #333;
+    font-size: 1.3em;
+}
+
+/* Main Content */
+.main {
+    margin-left: 270px; 
+    padding: 20px;
+}
+
+.container {
+    width: 90%;
+    margin: auto;
+    padding: 40px 0;
+}
+
+section {
+    padding-top: 2%;
+}
+
+/* Headings */
+h2 {
+    border-bottom: 2px solid #3c3c3c;
+    padding-bottom: 10px;
+    font-size: 2em;
+    color: #9cdcfe;
+    position: relative;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0;
+    height: 2px;
+    background: #569cd6;
+    transition: width 0.5s;
+}
+
+h2:hover::after {
+    width: 100%;
+}
+
+h3 {
+    color: #d7ba7d;
+    margin-top: 30px;
+}
+
+/* Lists */
+ul {
+    padding-left: 40px;
+}
+
+li {
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+/* Topics */
+.topics {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.topics li {
+    display: inline-block;
+    margin: 5px;
+    background: #5a5959;
+    color: #e0e0e0;
+    padding: 8px 15px;
+    border-radius: 10px;
+    cursor: default;
+}
+
+/* Buttons */
+.links {
+    background: black;
+    border: 2px solid green;
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 16px;
+    min-height: 40px;
+    outline: 0;
+    padding: 12px 14px;
+    margin-bottom: 2%;
+    text-align: center;
+    text-rendering: geometricprecision;
+    text-transform: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+}
+
+.links:hover,
+.links:active {
+    background-color: green;
+    background-position: 0 0;
+    color: white;
+}
+
+.links:active {
+    opacity: .5;
+}
+
+.no-hover {
+    background: black;
+    border: 2px solid darkgray;
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+    box-sizing: border-box;
+    color: lightgray;
+    cursor: pointer;
+    display: inline-block;
+    font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 16px;
+    min-height: 40px;
+    outline: 0;
+    padding: 12px 14px;
+    margin-bottom: 2%;
+    text-align: center;
+    text-rendering: geometricprecision;
+    text-transform: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+}
+
+/* Skills and Language Lists */
+.skills-list, .language-list {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.skills-list li, .language-list li {
+    width: 45%;
+    margin-bottom: 10px;
+    font-size: 1em;
+}
+
+/* Footer */
+footer {
+    margin-top: 50px;
+    background: rgb(0, 0, 0);
+    text-align: center;
+    padding: 10px 0;
+    position: fixed; 
+    bottom: 0; 
+    left: 0;
+    right: 0;
+    height: 20px;
+}
+
+footer p {
+    margin: 0;
+    padding-left: 20%;
+    color: #808080;
+}
+
+/* Profile Image */
+.profile-img {
+    display: block;
+    width: 40%;
+    margin: 20px auto;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .sidenav {
+        width: 200px;
+    }
+
+    .main {
+        margin-left: 220px;
+    }
+
+    .sidenav h1 {
+        font-size: 1.5em;
+    }
+
+    .sidenav a {
+        font-size: 0.9em;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .sidenav {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+
+    .sidenav h1, .sidenav .contact-info, .sidenav a {
+        text-align: left;
+        padding-left: 20px;
+    }
+
+    .main {
+        margin-left: 0;
+    }
+} 

@@ -2,532 +2,277 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eng-Shen Tu</title>
     <link rel="icon" href="/favicon.jpg">
-    <style>
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            width: 85%; 
-            position: absolute;
-            top: 0;
-            right: 2%;
-            background-color: black;
-            color: #d4d4d4;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding-right: 3%;
-        }
-
-        a {
-            color: #569cd6;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        a:hover {
-            color: #9cdcfe;
-            text-decoration: underline;
-        }
-
-        .sidenav {
-            height: 100%;
-            width: 20%; 
-            position: fixed;
-            top: 0;
-            left: 0;
-            background-color: #252526;
-            padding-top: 20px;
-            padding-left: 3%;
-            padding-right: 3%;
-            overflow-x: hidden;
-            font-size: 1.2em;
-            transition: width 0.5s;
-            z-index: 1000;
-        }
-
-        .sidenav h1 {
-            color: lightblue;
-            font-size: 1.5em;
-            text-align: left;
-            margin-bottom: 20px;
-            padding-left: 0%;
-        }
-
-        .sidenav .contact-info {
-            text-align: center;
-            margin-bottom: 20px;
-            font-size: 1.2em;
-        }
-
-        .sidenav .contact-info a {
-            color: #dcdcaa;
-            margin: 0px 0;
-            transition: color 0.3s;
-        }
-
-        .sidenav .contact-info a:hover {
-            color: #9cdcfe;
-        }
-
-        .sidenav a {
-            padding: 10px 20px;
-            text-decoration: none;
-            color: #dcdcaa;
-            transition: color 0.3s;
-        }
-
-        .menu a {
-            padding: 5px 20px;
-            text-decoration: none;
-            font-size: 1.2em;
-            color: #dcdcaa;
-            display: block;
-            transition: color 0.3s;
-        }
-
-        .menu a:hover {
-            background-color: #333;
-            font-size: 1.3em;
-        }
-
-        .main {
-            margin-left: 270px; 
-            padding: 20px;
-        }
-
-        .container {
-            width: 90%;
-            margin: auto;
-            padding: 40px 0;
-        }
-
-        section {
-            padding-top: 2%;
-        }
-
-        h2 {
-            border-bottom: 2px solid #3c3c3c;
-            padding-bottom: 10px;
-            font-size: 2em;
-            color: #9cdcfe;
-            position: relative;
-        }
-
-        h2::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -2px;
-            width: 0;
-            height: 2px;
-            background: #569cd6;
-            transition: width 0.5s;
-        }
-
-        h2:hover::after {
-            width: 100%;
-        }
-
-        h3 {
-            color: #d7ba7d;
-            margin-top: 30px;
-        }
-
-        ul {
-            padding-left: 40px;
-        }
-
-        li {
-            margin-bottom: 15px;
-            line-height: 1.6;
-        }
-
-        .topics {
-            list-style-type: none;
-            padding: 0;
-            display: flex;
-            flex-wrap: wrap;
-        }
-
-        .topics li {
-            display: inline-block;
-            margin: 5px;
-            background: #5a5959;
-            color: #e0e0e0;
-            padding: 8px 15px;
-            border-radius: 10px;
-            cursor: default;
-        }
-
-        .links {
-            background: black;
-            border: 2px solid green;
-            border-radius: 6px;
-            box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
-            box-sizing: border-box;
-            color: #FFFFFF;
-            cursor: pointer;
-            display: inline-block;
-            font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
-            font-size: 16px;
-            font-weight: 800;
-            line-height: 16px;
-            min-height: 40px;
-            outline: 0;
-            padding: 12px 14px;
-            margin-bottom: 2%;
-            text-align: center;
-            text-rendering: geometricprecision;
-            text-transform: none;
-            user-select: none;
-            -webkit-user-select: none;
-            touch-action: manipulation;
-            vertical-align: middle;
-        }
-
-        .links:hover,
-        .links:active {
-            background-color: green;
-            background-position: 0 0;
-            color: white;
-        }
-
-        .links:active {
-            opacity: .5;
-        }
-
-        .no-hover {
-            background: black;
-            border: 2px solid darkgray;
-            border-radius: 6px;
-            box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
-            box-sizing: border-box;
-            color: lightgray;
-            cursor: pointer;
-            display: inline-block;
-            font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
-            font-size: 16px;
-            font-weight: 800;
-            line-height: 16px;
-            min-height: 40px;
-            outline: 0;
-            padding: 12px 14px;
-            margin-bottom: 2%;
-            text-align: center;
-            text-rendering: geometricprecision;
-            text-transform: none;
-            user-select: none;
-            -webkit-user-select: none;
-            touch-action: manipulation;
-            vertical-align: middle;
-        }
-
-        .skills-list, .language-list {
-            list-style-type: none;
-            display: flex;
-            flex-wrap: wrap;
-        }
-
-        .skills-list li, .language-list li {
-            width: 45%;
-            margin-bottom: 10px;
-            font-size: 1em;
-        }
-
-        footer {
-            margin-top: 50px;
-            background: rgb(0, 0, 0);
-            text-align: center;
-            padding: 10px 0;
-            position: fixed; 
-            bottom: 0; 
-            left: 0;
-            right: 0;
-            height: 20px;
-        }
-
-        footer p {
-            margin: 0;
-            padding-left: 20%;
-            color: #808080;
-        }
-
-        /* Profile image styling */
-        .profile-img {
-            display: block;
-            width: 40%;
-            margin: 20px auto;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-        }
-
-        @media screen and (max-width: 768px) {
-            .sidenav {
-                width: 200px;
-            }
-
-            .main {
-                margin-left: 220px;
-            }
-
-            .sidenav h1 {
-                font-size: 1.5em;
-            }
-
-            .sidenav a {
-                font-size: 0.9em;
-            }
-        }
-
-        @media screen and (max-width: 600px) {
-            .sidenav {
-                width: 100%;
-                height: auto;
-                position: relative;
-            }
-
-            .sidenav h1, .sidenav .contact-info, .sidenav a {
-                text-align: left;
-                padding-left: 20px;
-            }
-
-            .main {
-                margin-left: 0;
-            }
-        }
-
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Sidebar Navigation -->
+    <div class="sidenav">
+        <h1>Eng-Shen (James) Tu</h1>
+        <div class="menu">
+            <a href="#about">About Me</a>
+            <a href="#updates">Updates</a>
+            <a href="#education">Education</a>
+            <a href="#publications">Publications</a>
+            <a href="#research">Research Experience</a>
+            <a href="#work">Work Experience</a>
+            <a href="#awards">Awards and Honors</a>
+            <a href="#extracurricular">Other stuff</a>
+            <a href="#skills">Technical Skills</a>
+        </div>
 
-<div class="sidenav">
-    <h1>Eng-Shen (James) Tu </h1>
-    <div class="menu">
-        <a href="#about">About Me</a>
-        <a href="#updates">Updates</a>
-        <a href="#education">Education</a>
-        <a href="#publications">Publications</a>
-        <a href="#research">Research Experience</a>
-        <a href="#publications">Publications</a>
-        <a href="#work">Work Experience</a>
-        <a href="#awards">Awards and Honors</a>
-        <a href="#extracurricular">Other stuff</a>
-        <a href="#skills">Technical Skills</a>
+        <div class="contact-info">
+            Email: <a href="mailto:jamestu6301@gmail.com"><u>jamestu6301@gmail.com</u></a><br><br>
+            LinkedIn: <a href="https://www.linkedin.com/in/james-tu-ncku/"><u>Eng-Shen Tu</u></a><br><br>
+            GitHub: <a href="https://github.com/JamesTu-jtjt"><u>JamesTu-jtjt</u></a>
+        </div>
     </div>
 
-    <div class="contact-info" style="position: absolute; bottom: 5%; font-size: 1em; text-align: left; padding-left: 1%;">
-        Email: <a href="mailto:jamestu6301@gmail.com"><u>jamestu6301@gmail.com</u></a><br><br>
-        LinkedIn: <a href="https://www.linkedin.com/in/james-tu-ncku/"><u>Eng-Shen Tu</u></a><br><br>
-        GitHub: <a href="https://github.com/JamesTu-jtjt"><u>JamesTu-jtjt</u></a>
-    </div>
-</div>
+    <!-- Main Content -->
+    <div class="main">
+        <div class="container">
+            <!-- About Section -->
+            <section id="about">
+                <h2>About me</h2>
+                <img src="Profile.JPG" alt="James" class="profile-img">
+                <p style="text-align: justify; padding: 2%;">
+                    I am Eng-Shen Tu, a recent graduate from the Department of Computer Science and Information Engineering at National Cheng Kung University (NCKU) in Taiwan. My passion lies in using artificial intelligence to solve real-world problems in software engineering, particularly in software quality assurance and AI-augmented software testing.
+                    <br><br> Feel free to reach out to me for collaboration or connect with me on 
+                    <a href="https://www.linkedin.com/in/eng-shen-tu/">LinkedIn</a>!
+                    <br><br>
+                    <a style="padding-left: 3%; padding-right: 3%;" href="https://drive.google.com/file/d/1h-0WuX6952JRZz_u4L0fDGWc2oPf0MXE/view?usp=sharing" class="links">CV</a>
 
-<div class="main">
-    <div class="container">
-        <section id="about">
-            <h2>About me</h2>
-            <img src="Profile.JPG" alt="James" class="profile-img">
-            <p style="text-align: justify; padding: 2%;">
-                I am Eng-Shen Tu, a recent graduate from the Department of Computer Science and Information Engineering at National Cheng Kung University (NCKU) in Taiwan. My passion lies in using artificial intelligence to solve real-world problems in software engineering, particularly in software quality assurance and AI-augmented software testing.
-                <br><br> Feel free to reach out to me for collaboration or connect with me on 
-                <a href="https://www.linkedin.com/in/eng-shen-tu/">LinkedIn</a>!
-                <br><br>
-                <a style="padding-left: 3%; padding-right: 3%;" href="https://drive.google.com/file/d/1h-0WuX6952JRZz_u4L0fDGWc2oPf0MXE/view?usp=sharing" class="links" >CV</a>
-
-                <h3>What I do when I'm not coding:</h3>
-                <p><strong>Volleyball, Music, Casual MUNing, Chess </strong></p>
-                <a href="model-un.html" class="links">Explore my Model UN Experience</a>
+                    <h3>What I do when I'm not coding:</h3>
+                    <p><strong>Volleyball, Music, Casual MUNing, Chess </strong></p>
+                    <a href="model-un.html" class="links">Explore my Model UN Experience</a>
+                </p>
                 
-            </p>
-            
-            <h3>Research Interests:</h3>
-            <ul class="topics">
-                <li>Software Engineering</li>
-                <li>Software Quality Assurance</li>
-                <li>AI-Augmented Software Engineering</li>
-                <li>Software Testing and Test Automation</li>
-                <li>Human-Centered AI Systems</li>
-                <li>Generative AI</li>
-            </ul>
-        </section>
-        <section id="updates">
-            <h2>Updates: </h2>
-            <ul style="list-style-type: '🔔  '; color: #999999;">
-                <li>January, 2025: <br>My paper "Input Relation Prompting for Metamorphic Testing on Query-Based Systems" has been published in the Journal of Information Science and Engineering! </li>
-                <li>December, 2024: <br>Joined the Taiwanese Army to fulfill mandatory military service. (Discharged: April, 2025)</li>
-                <li>July, 2024: <br>Presented the paper "A Clustering-Based Approach for Detecting Low-Contrast Texts on Web Pages at the Granular Character Level" at IEEE COMPSAC in Osaka, Japan.</li>
-                <li>May, 2024: <br>Led team to win 2nd Place and the Popularity Award at the 4th Taipei Metro Hackathon! </li>
-            </ul>
-        </section>
+                <h3>Research Interests:</h3>
+                <ul class="topics">
+                    <li>Software Engineering</li>
+                    <li>Software Quality Assurance</li>
+                    <li>AI-Augmented Software Engineering</li>
+                    <li>Software Testing and Test Automation</li>
+                    <li>Human-Centered AI Systems</li>
+                    <li>Generative AI</li>
+                </ul>
 
-        <section id="education">
-            <h2>Education</h2>
-            <h3>National Cheng Kung University (NCKU), Tainan, Taiwan</h3>
-            <p>Bachelor of Science in Computer Science and Information Engineering, Class of 2024</p>
-            <h3>Fudan High School, Taoyuan, Taiwan</h3>
-            <p>General Education, Class of 2019</p>
-        </section>
-    
-        <section id="publications">
-            <h2>Publications</h2>
-            <ul>
-                <li><strong> Tu, E.-S.</strong>, Lee, S. (2025). <em>Input Relation Prompting for Metamorphic Testing on Query-Based Systems</em>. Journal of Information Science and Engineering, 41(1), 43-60. doi:10.6688/JISE.202501_41(1).0003.</li>
-                <li><strong> Tu, E.-S.</strong>, Lee, S. (2024). <em>A Clustering-Based Approach for Detecting Low-Contrast Texts on Web Pages at the Granular Character Level</em>. In Proceedings of the IEEE 48th Annual Computers, Software, and Applications Conference (COMPSAC), Osaka, Japan, pp. 2296-2301. doi:10.1109/COMPSAC61105.2024.00369.</li>
-                <li> Hsu, C.-C., Jian, C.-Y., <strong>Tu, E.-S.</strong>, Lee, C.-M., & Chen, G.-L. (2024). <em>Real-Time Compressed Sensing for Joint Hyperspectral Image Transmission and Restoration for CubeSat</em>. IEEE Transactions on Geoscience and Remote Sensing. doi:10.1109/TGRS.2024.3378828.</li>
-                <li><strong> Tu, E.-S.</strong>, Chen, Y.-H., Liu, E.-C., Keng, H.-Y., & Li, C.-T. (2022). <em>An Embarrassingly Simple Rule-based Visiting Circulation Approach to Trip Destination Prediction</em>. In Proceedings of the IEEE International Conference on Big Data, Osaka, Japan, pp. 6565-6572. doi:10.1109/BigData55660.2022.10020650.</li>
-                <a href="https://scholar.google.com/citations?user=Ec3gA-EAAAAJ&hl=en&oi=sra" class="links">Google Scholar</a> 
-            </ul>
-        </section>
-    
-        <section id="research">
-            <h2>Research Experience</h2>
-    
-            <h3>Research Assistant in the Software Engineering and Intelligent Test Automation Lab, NCKU</h3>
-            <p><strong>Advisor:</strong> Associate Professor Shin-Jie Lee<br>
-            March 2022 – September 2024</p>
-            <ul>
-                <li><strong>Research Topics:</strong> Software Engineering, Software Development, Software Testing, Test Automation, Metamorphic Testing, Accessibility in UI/UX Design</li>
-                <li> Developed over 20 web crawlers for the Bank SinoPac Industry-Academia Cooperation Project.</li>
-                <li> Spearheaded independent research on input relation prompting for metamorphic testing, resulting in a first-authored publication in the Journal of Information Science and Engineering (JISE). </li>
-                <a href="https://jise.iis.sinica.edu.tw/JISESearch/pages/View/PaperView.jsf?keyId=202_2741" class="links">Original Paper</a> 
-                <a href="https://tcse2023.seat.org.tw/" class="links">TCSE Best English Paper</a> 
-                <!-- <a class="no-hover">Accepted but Not Yet Published</a>  -->
-                <li> Led independent research on developing a clustering-based approach to detect low-contrast texts on web pages, resulting in a first-authored publication in the IEEE Computers, Software, and Applications Conference (IEEE COMPSAC). </li>
-                <a href="https://www.computer.org/csdl/proceedings-article/compsac/2024/769600c296/1ZIUtD5aaLm" class="links">Original Paper</a> 
-                <a href="https://github.com/JamesTu-jtjt/Web-Text-Elements-Dataset" class="links">Collected Dataset</a> 
-            </ul>
-    
-            <h3>Undergraduate Researcher in the Intelligent Knowledge Management Lab, NCKU</h3>
-            <p><strong>Advisor:</strong> Professor Hung-Yu Kao<br>
-            September 2022 – September 2023</p>
-            <ul>
-                <li><strong>Research Topics:</strong> Natural Language Processing (NLP), Generative AI, Large Language Models (LLMs),Reinforcement Learning through Feedback, LLM Fine-tuning</li>
-                <li>Led a team to participate in the 2022 NASA International Space Apps Challenge, where we proposed an innovative space-themed text-to-image generator framework while using VGG16 to add features such as content-style modulation, which won us the Better Future Award from MediaTek.  </li>
-                <a href="https://2022.spaceappschallenge.org/challenges/2022-challenges/art-worlds/teams/james-hankathon/project" class="links">Project Website</a>
-                <a href="https://github.com/JamesTu-jtjt/Nasa2022Hackathon" class="links">Source Code</a>
-                <li>Senior Project: Presented a novel approach to fine-tuning Large Language Models for code generation where we investigate the possibility of training weak AIs with feedback from powerful AIs through iterative reinforcement learning. The process can be entirely automated and for the task of text-to-code generation, model performance of the weak AIs improved by as much as 45%.</li>
-                <a href="https://www.canva.com/design/DAFlJjWlIxM/nnqs1QLUGG5caANGDt8qIg/view?utm_content=DAFlJjWlIxM&utm_campaign=designshare&utm_medium=link&utm_source=editor" class="links">Presentation</a>
-                <a href="https://github.com/JamesTu-jtjt/SeniorProject" class="links">Source Code</a>
-            </ul>
-    
-            <h3>Research Assistant in the Advanced Computer Vision Lab, NCKU</h3>
-            <p><strong>Advisor:</strong> Associate Professor Chih-Chung Hsu<br>
-            May 2022 – February 2023</p>
-            <ul>
-                <li><strong>Research Topics:</strong> Deep Learning, Computer Vision, Compressed Sensing, Hyperspectral Analysis</li>
-                <li>Co-authored a paper in IEEE Transactions on Geoscience and Remote Sensing (IEEE TGRS) on real-time compressed sensing for hyperspectral image transmission in miniaturized satellites. The proposed network addresses stripe effects and enables edge-device reconstruction without central server reliance.</li>
-                <a href="https://github.com/ming053l/RTCS" class="links">Source Code</a>
-                <a href="https://ieeexplore.ieee.org/document/10474407" class="links">Original Paper (IEEE)</a> 
-                <a href="https://arxiv.org/abs/2404.15781" class="links">Original Paper (arXiv)</a> 
-            </ul>
+                <h3>Current Projects: </h3>
+                <ul style="list-style-type: '';">
+                    <li><strong>CoverIQ:</strong> Automated Tools and Solutions that Cover Intelligent Quality Assurance
+                        <br>
+                        <a href="https://drive.google.com/file/d/1Ds6VeEpd2lZ2zynQHidgxVcVm3N3ZjKe/view?usp=sharing" class="links">Demo Video</a>
+                        <a href="https://github.com/CoverIQ/CoverIQ-Test-Assistant/tree/Figma-UI-Test-Planner-Demo" class="links">Figma UI Test Planner</a>
+                        <a href="https://github.com/CoverIQ/CoverIQ-Test-Assistant/tree/Local-Unit-Test-Support-Demo" class="links">Local Unit Test Support</a>
+                    </li>
+                    <li><strong>Herewegoal:</strong> A project management solution built for students, freelancers, and solo entrepreneurs.
+                        <br>
+                        <a href="https://www.herewegoal.com/" class="links">Landing Page</a>
+                    </li>
+                </ul>
+                (Reach out if you're interested in collaborating!)
+            </section>
 
-            <h3>Part-Time Research Assistant in the Networked Artificial Intelligence Lab, NCKU</h3>
-            <p><strong>Advisor:</strong> Professor Cheng-Te Li<br>
-            September 2022 – December 2022</p>
-            <ul>
-                <li><strong>Research Topics:</strong> Machine Learning Algorithms, Exploratory Data Analysis, Algorithm Development</li>
-                <li>Selected to participate in the 2022 IEEE Big Data Cup and developed a rule-based algorithm for the Trip Destination Prediction challenge, securing second place internationally. The methodology is detailed in publication 4 below.</li>
-                <a href="https://github.com/JamesTu-jtjt/IEEE-Big-Data-Cup" class="links">Source Code</a>
-                <a href="https://ieeexplore.ieee.org/document/10020650" class="links">Original Paper</a> 
-            </ul>
-    
-        </section>
-    
-        <section id="work">
-            <h2>Work Experience</h2>
-    
-            <h3>Quality Assurance Intern at Appier, Taipei Office</h3>
-            <p>November 2023 – August 2024</p>
-            <ul>
-                <li>Designed and developed automated testing solutions for AI-driven SaaS products and LLM-related features.</li>
-                <li>Reduced manual testing efforts by 50% through automation using Selenium and WebdriverIO.</li>
-                <li>Implemented behavior-driven development (BDD) with Cucumber to enhance readability and maintainability of E2E test cases.</li>
-                <li>Validated backend/API functionalities using AWS DynamoDB in real-world testing scenarios.</li>
-                <li>Planned and executed comprehensive regression testing and test documentation across 19 Agile sprints, maintaining automated tests within CI/CD pipelines using Jenkins and GitHub Actions.</li>
-                <li>Mentored two new team members, sharing best practices in QA automation and product knowledge.</li>
-              </ul>              
-    
-            <h3>Software Development Intern at Seameo Recsam, Penang, Malaysia</h3>
-            <p>September 2023 – November 2023</p>
-            <ul>
-                <li>Selected for the government-funded TCA international talent program (top 1%).</li>
-                <li>Took charge of full-stack web development for the Seameo Recsam Makerspace Website.</li>
-                <a href="https://seameo-recsam-makerspace.github.io/" class="links">Project Website</a>
-                <a href="https://github.com/SEAMEO-RECSAM-Makerspace/SEAMEO-RECSAM-Makerspace.github.io/" class="links">Source Code</a>
-                <li>Hosted workshops for talent exchange, teaching Git version control and website maintenance.</li>
-                <li>Received the Global Supernova Award from the Talent Circulation Alliance and Digi+.</li>
-            </ul>
-    
-        </section>
-    
-        <section id="awards">
-            <h2>Awards and Honors</h2>
-            <ul>
-                <li>Second Place and the Popularity Award, Taipei Metro Hackathon</li>
-                <li>Global Supernova Award, 2023 Taiwanese Talent International Internship Program</li>
-                <li>Best Paper Award, 19th Taiwan Conference on Software Engineering</li>
-                <li>Second Place, 2022 IEEE Big Data Cup: Trip Destination Prediction Challenge</li>
-                <li>MediaTek Better Future Award, 2022 NASA International Space Apps Challenge</li>
-            </ul>
-        </section>
-    
-        <section id="extracurricular">
-            <h2>Extracurricular Activities</h2>
-    
-            <h3>Google Developer Student Club at National Yang Ming Chiao Tung University (GDSC@NYCU)</h3>
-            <p><strong>(Current) Project Leader</strong></p>
+            <!-- Updates Section -->
+            <section id="updates">
+                <h2>Updates: </h2>
+                <ul style="list-style-type: '🔔  '; color: #999999;">
+                    <li>May, 2025: 
+                        <ul>
+                            <li>I have started working on CoverIQ, a platform that provides automated software testing tools and solutions for quality assurance! (Looking for collaborators!)</li>
+                            <li>I have been selected to participate in a research program with Professor Saikat Dutta at Cornell University over the summer! </li>
+                        </ul>
+                    <li>January, 2025: 
+                        <br>My paper "Input Relation Prompting for Metamorphic Testing on Query-Based Systems" has been published in the Journal of Information Science and Engineering! </li>
+                    <li>December, 2024: 
+                        <br>Joined the Taiwanese Army to fulfill mandatory military service. (Discharged: April, 2025)</li>
+                    <li>August, 2024: 
+                        <br>I have been invited to serve as Project Leader for the GDG OnCampus Program at NYCU! </li>
+                    <li>July, 2024: 
+                        <br>Presented the paper "A Clustering-Based Approach for Detecting Low-Contrast Texts on Web Pages at the Granular Character Level" at IEEE COMPSAC in Osaka, Japan.</li>
+                    <li>May, 2024: 
+                        <br>Led team to win 2nd Place and the Popularity Award at the 4th Taipei Metro Hackathon! </li>
+                </ul>
+            </section>
 
-            <h3>Harvard Undergraduate Taiwan Leadership Conference</h3>
-            <p><strong>Head Teaching Assistant (2022, 2024) | Teaching Assistant (2020, 2021, 2023)</strong></p>
-    
-            <h3>Hult Prize On-Campus Program at NCKU</h3>
-            <p><strong>Founder and Campus Director (2021) </strong></p>
-    
-            <h3>Blockchain Club at NCKU</h3>
-            <p><strong>Director of Research (2021) </strong> </p>
+            <!-- Education Section -->
+            <section id="education">
+                <h2>Education</h2>
+                <h3>National Cheng Kung University (NCKU), Tainan, Taiwan</h3>
+                <p>Bachelor of Science in Computer Science and Information Engineering, Class of 2024</p>
+                <h3>Fudan High School, Taoyuan, Taiwan</h3>
+                <p>General Education, Class of 2019</p>
+            </section>
 
-        </section>
-    
-        <section id="skills">
-            <h2>Technical Skills</h2>
-            <h3>Programming Languages</h3>
-            <ul class="skills-list">
-                <li>Python</li>
-                <li>JavaScript</li>
-                <li>TypeScript</li>
-                <li>C/C++</li>
-            </ul>
-            <h3>Automation Frameworks</h3>
-            <ul class="skills-list">
-                <li>Selenium</li>
-                <li>WebdriverIO</li>
-                <li>Cucumber</li>
-                <li>Scrapy</li>
-                <li>Pytest</li>
-            </ul>
-            <h3>DevOps & Cloud</h3>
-            <ul class="skills-list">
-                <li>Git</li>
-                <li>Jenkins</li>
-                <li>GitHub Actions</li>
-                <li>Docker</li>
-                <li>AWS (DynamoDB)</li>
-            </ul>
-            <h3>Languages</h3>
-            <ul class="language-list">
-                <li>English (Fluent, TOEFL iBT 114)</li>
-                <li>Mandarin Chinese (Native)</li>
-            </ul>
-        </section>
+            <!-- Publications Section -->
+            <section id="publications">
+                <h2>Publications</h2>
+                <ul>
+                    <li><strong> Tu, E.-S.</strong>, Lee, S. (2025). <em>Input Relation Prompting for Metamorphic Testing on Query-Based Systems</em>. Journal of Information Science and Engineering, 41(1), 43-60. doi:10.6688/JISE.202501_41(1).0003.</li>
+                    <li><strong> Tu, E.-S.</strong>, Lee, S. (2024). <em>A Clustering-Based Approach for Detecting Low-Contrast Texts on Web Pages at the Granular Character Level</em>. In Proceedings of the IEEE 48th Annual Computers, Software, and Applications Conference (COMPSAC), Osaka, Japan, pp. 2296-2301. doi:10.1109/COMPSAC61105.2024.00369.</li>
+                    <li> Hsu, C.-C., Jian, C.-Y., <strong>Tu, E.-S.</strong>, Lee, C.-M., & Chen, G.-L. (2024). <em>Real-Time Compressed Sensing for Joint Hyperspectral Image Transmission and Restoration for CubeSat</em>. IEEE Transactions on Geoscience and Remote Sensing. doi:10.1109/TGRS.2024.3378828.</li>
+                    <li><strong> Tu, E.-S.</strong>, Chen, Y.-H., Liu, E.-C., Keng, H.-Y., & Li, C.-T. (2022). <em>An Embarrassingly Simple Rule-based Visiting Circulation Approach to Trip Destination Prediction</em>. In Proceedings of the IEEE International Conference on Big Data, Osaka, Japan, pp. 6565-6572. doi:10.1109/BigData55660.2022.10020650.</li>
+                    <a href="https://scholar.google.com/citations?user=Ec3gA-EAAAAJ&hl=en&oi=sra" class="links">Google Scholar</a> 
+                </ul>
+            </section>
 
+            <!-- Research Experience Section -->
+            <section id="research">
+                <h2>Research Experience</h2>
+    
+                <h3>Research Assistant in the Software Engineering and Intelligent Test Automation Lab, NCKU</h3>
+                <p><strong>Advisor:</strong> Associate Professor Shin-Jie Lee<br>
+                March 2022 – September 2024</p>
+                <ul>
+                    <li><strong>Research Topics:</strong> Software Engineering, Software Development, Software Testing, Test Automation, Metamorphic Testing, Accessibility in UI/UX Design</li>
+                    <li> Developed over 20 web crawlers for the Bank SinoPac Industry-Academia Cooperation Project.</li>
+                    <li> Spearheaded independent research on input relation prompting for metamorphic testing, resulting in a first-authored publication in the Journal of Information Science and Engineering (JISE). </li>
+                    <a href="https://jise.iis.sinica.edu.tw/JISESearch/pages/View/PaperView.jsf?keyId=202_2741" class="links">Original Paper</a> 
+                    <a href="https://tcse2023.seat.org.tw/" class="links">TCSE Best English Paper</a> 
+                    <!-- <a class="no-hover">Accepted but Not Yet Published</a>  -->
+                    <li> Led independent research on developing a clustering-based approach to detect low-contrast texts on web pages, resulting in a first-authored publication in the IEEE Computers, Software, and Applications Conference (IEEE COMPSAC). </li>
+                    <a href="https://www.computer.org/csdl/proceedings-article/compsac/2024/769600c296/1ZIUtD5aaLm" class="links">Original Paper</a> 
+                    <a href="https://github.com/JamesTu-jtjt/Web-Text-Elements-Dataset" class="links">Collected Dataset</a> 
+                </ul>
+    
+                <h3>Undergraduate Researcher in the Intelligent Knowledge Management Lab, NCKU</h3>
+                <p><strong>Advisor:</strong> Professor Hung-Yu Kao<br>
+                September 2022 – September 2023</p>
+                <ul>
+                    <li><strong>Research Topics:</strong> Natural Language Processing (NLP), Generative AI, Large Language Models (LLMs),Reinforcement Learning through Feedback, LLM Fine-tuning</li>
+                    <li>Led a team to participate in the 2022 NASA International Space Apps Challenge, where we proposed an innovative space-themed text-to-image generator framework while using VGG16 to add features such as content-style modulation, which won us the Better Future Award from MediaTek.  </li>
+                    <a href="https://2022.spaceappschallenge.org/challenges/2022-challenges/art-worlds/teams/james-hankathon/project" class="links">Project Website</a>
+                    <a href="https://github.com/JamesTu-jtjt/Nasa2022Hackathon" class="links">Source Code</a>
+                    <li>Senior Project: Presented a novel approach to fine-tuning Large Language Models for code generation where we investigate the possibility of training weak AIs with feedback from powerful AIs through iterative reinforcement learning. The process can be entirely automated and for the task of text-to-code generation, model performance of the weak AIs improved by as much as 45%.</li>
+                    <a href="https://www.canva.com/design/DAFlJjWlIxM/nnqs1QLUGG5caANGDt8qIg/view?utm_content=DAFlJjWlIxM&utm_campaign=designshare&utm_medium=link&utm_source=editor" class="links">Presentation</a>
+                    <a href="https://github.com/JamesTu-jtjt/SeniorProject" class="links">Source Code</a>
+                </ul>
+    
+                <h3>Research Assistant in the Advanced Computer Vision Lab, NCKU</h3>
+                <p><strong>Advisor:</strong> Associate Professor Chih-Chung Hsu<br>
+                May 2022 – February 2023</p>
+                <ul>
+                    <li><strong>Research Topics:</strong> Deep Learning, Computer Vision, Compressed Sensing, Hyperspectral Analysis</li>
+                    <li>Co-authored a paper in IEEE Transactions on Geoscience and Remote Sensing (IEEE TGRS) on real-time compressed sensing for hyperspectral image transmission in miniaturized satellites. The proposed network addresses stripe effects and enables edge-device reconstruction without central server reliance.</li>
+                    <a href="https://github.com/ming053l/RTCS" class="links">Source Code</a>
+                    <a href="https://ieeexplore.ieee.org/document/10474407" class="links">Original Paper (IEEE)</a> 
+                    <a href="https://arxiv.org/abs/2404.15781" class="links">Original Paper (arXiv)</a> 
+                </ul>
+
+                <h3>Part-Time Research Assistant in the Networked Artificial Intelligence Lab, NCKU</h3>
+                <p><strong>Advisor:</strong> Professor Cheng-Te Li<br>
+                September 2022 – December 2022</p>
+                <ul>
+                    <li><strong>Research Topics:</strong> Machine Learning Algorithms, Exploratory Data Analysis, Algorithm Development</li>
+                    <li>Selected to participate in the 2022 IEEE Big Data Cup and developed a rule-based algorithm for the Trip Destination Prediction challenge, securing second place internationally. The methodology is detailed in publication 4 below.</li>
+                    <a href="https://github.com/JamesTu-jtjt/IEEE-Big-Data-Cup" class="links">Source Code</a>
+                    <a href="https://ieeexplore.ieee.org/document/10020650" class="links">Original Paper</a> 
+                </ul>
+    
+            </section>
+    
+            <!-- Work Experience Section -->
+            <section id="work">
+                <h2>Work Experience</h2>
+    
+                <h3>Quality Assurance Intern at Appier, Taipei Office</h3>
+                <p>November 2023 – August 2024</p>
+                <ul>
+                    <li>Designed and developed automated testing solutions for AI-driven SaaS products and LLM-related features.</li>
+                    <li>Reduced manual testing efforts by 50% through automation using Selenium and WebdriverIO.</li>
+                    <li>Implemented behavior-driven development (BDD) with Cucumber to enhance readability and maintainability of E2E test cases.</li>
+                    <li>Validated backend/API functionalities using AWS DynamoDB in real-world testing scenarios.</li>
+                    <li>Planned and executed comprehensive regression testing and test documentation across 19 Agile sprints, maintaining automated tests within CI/CD pipelines using Jenkins and GitHub Actions.</li>
+                    <li>Mentored two new team members, sharing best practices in QA automation and product knowledge.</li>
+                  </ul>              
+    
+                <h3>Software Development Intern at Seameo Recsam, Penang, Malaysia</h3>
+                <p>September 2023 – November 2023</p>
+                <ul>
+                    <li>Selected for the government-funded TCA international talent program (top 1%).</li>
+                    <li>Took charge of full-stack web development for the Seameo Recsam Makerspace Website.</li>
+                    <a href="https://seameo-recsam-makerspace.github.io/" class="links">Project Website</a>
+                    <a href="https://github.com/SEAMEO-RECSAM-Makerspace/SEAMEO-RECSAM-Makerspace.github.io/" class="links">Source Code</a>
+                    <li>Hosted workshops for talent exchange, teaching Git version control and website maintenance.</li>
+                    <li>Received the Global Supernova Award from the Talent Circulation Alliance and Digi+.</li>
+                </ul>
+    
+            </section>
+    
+            <!-- Awards Section -->
+            <section id="awards">
+                <h2>Awards and Honors</h2>
+                <ul>
+                    <li>Second Place and the Popularity Award, Taipei Metro Hackathon</li>
+                    <li>Global Supernova Award, 2023 Taiwanese Talent International Internship Program</li>
+                    <li>Best Paper Award, 19th Taiwan Conference on Software Engineering</li>
+                    <li>Second Place, 2022 IEEE Big Data Cup: Trip Destination Prediction Challenge</li>
+                    <li>MediaTek Better Future Award, 2022 NASA International Space Apps Challenge</li>
+                </ul>
+            </section>
+    
+            <!-- Extracurricular Section -->
+            <section id="extracurricular">
+                <h2>Extracurricular Activities</h2>
+    
+                <h3>Google Developer Student Club at National Yang Ming Chiao Tung University (GDSC@NYCU)</h3>
+                <p><strong>(Current) Project Leader</strong></p>
+
+                <h3>Harvard Undergraduate Taiwan Leadership Conference</h3>
+                <p><strong>Head Teaching Assistant (2022, 2024) | Teaching Assistant (2020, 2021, 2023)</strong></p>
+    
+                <h3>Hult Prize On-Campus Program at NCKU</h3>
+                <p><strong>Founder and Campus Director (2021) </strong></p>
+    
+                <h3>Blockchain Club at NCKU</h3>
+                <p><strong>Director of Research (2021) </strong> </p>
+
+            </section>
+    
+            <!-- Skills Section -->
+            <section id="skills">
+                <h2>Technical Skills</h2>
+                <h3>Programming Languages</h3>
+                <ul class="skills-list">
+                    <li>Python</li>
+                    <li>JavaScript</li>
+                    <li>TypeScript</li>
+                    <li>C/C++</li>
+                </ul>
+                <h3>Automation Frameworks</h3>
+                <ul class="skills-list">
+                    <li>Selenium</li>
+                    <li>WebdriverIO</li>
+                    <li>Cucumber</li>
+                    <li>Scrapy</li>
+                    <li>Pytest</li>
+                </ul>
+                <h3>DevOps & Cloud</h3>
+                <ul class="skills-list">
+                    <li>Git</li>
+                    <li>Jenkins</li>
+                    <li>GitHub Actions</li>
+                    <li>Docker</li>
+                    <li>AWS (DynamoDB)</li>
+                </ul>
+                <h3>Languages</h3>
+                <ul class="language-list">
+                    <li>English (Fluent, TOEFL iBT 114)</li>
+                    <li>Mandarin Chinese (Native)</li>
+                </ul>
+            </section>
+
+        </div>
     </div>
-</div>
 
-<footer>
-    <p>&copy; 2024 Eng-Shen Tu (James Tu). All rights reserved.</p>
-</footer>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Eng-Shen Tu (James Tu). All rights reserved.</p>
+    </footer>
 
+    <!-- JavaScript -->
+    <script src="script.js"></script>
 </body>
 </html>
