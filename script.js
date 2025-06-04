@@ -42,4 +42,13 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+
+    const sidebar = document.querySelector('.sidenav');
+    const toggleButton = document.querySelector('.sidebar-toggle');
+    const mainContent = document.querySelector('.main');
+
+    toggleButton.addEventListener('click', function() {
+        sidebar.classList.toggle('collapsed');
+        mainContent.classList.toggle('expanded');
+    });
 }); 

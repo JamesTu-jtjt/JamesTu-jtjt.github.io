@@ -53,19 +53,42 @@ a:hover {
     padding-right: 0%;
     overflow-x: hidden;
     font-size: 1.2em;
-    transition: width 0.5s;
+    transition: all 0.3s ease;
     z-index: 1000;
     display: flex;
     flex-direction: column;
     border-right: 1px solid rgba(74, 158, 255, 0.1);
 }
 
+.sidenav.collapsed {
+    width: 60px;
+}
+
+.sidenav.collapsed .menu,
+.sidenav.collapsed .contact-info {
+    display: none;
+}
+
 .sidenav h1 {
     color: var(--primary-emerald);
-    font-size: 1.5em;
+    font-size: 1.2em;
     text-align: left;
     margin-bottom: 20px;
     padding-left: 0%;
+    overflow: hidden;
+    position: relative;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.sidenav.collapsed h1 {
+    font-size: 1.2em;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+    margin: 0;
 }
 
 .sidenav .contact-info {
@@ -119,8 +142,13 @@ a:hover {
 
 /* Main Content */
 .main {
-    margin-left: 270px; 
+    margin-left: 22%;
     padding: 20px;
+    transition: margin-left 0.3s ease;
+}
+
+.main.expanded {
+    margin-left: 60px;
 }
 
 .container {
@@ -304,8 +332,35 @@ footer p {
     width: 40%;
     margin: 20px auto;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-    border-radius: 8px;
-    border: 3px solid var(--primary-emerald);
+    border-radius: 8px; 
+}
+
+/* Toggle Button */
+.sidebar-toggle {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    background: var(--background-darker);
+    border: 1px solid var(--primary-blue);
+    border-radius: 50%;
+    color: var(--primary-blue);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    transition: all 0.3s ease;
+    font-size: 20px;
+    margin-left: auto;
+}
+
+.sidebar-toggle:hover {
+    background: var(--primary-blue);
+    color: var(--background-darker);
+}
+
+.sidenav.collapsed .sidebar-toggle {
+    margin-left: 0;
 }
 
 /* Responsive Design */
