@@ -436,3 +436,25 @@ footer p {
         margin: 10px 0;
     }
 } 
+
+#updates .updates-container {
+    max-height: 350px;       /* Adjust height if desired */
+    overflow-y: scroll;
+    padding-right: 10px;
+    border-left: 3px solid #ddd;
+    margin-top: 15px;
+}
+
+/* optional: scrollbar styling */
+#updates .updates-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+#updates .updates-container::-webkit-scrollbar-thumb {
+    background: #bbb;
+    border-radius: 4px;
+}
+
+#updates .updates-container::-webkit-scrollbar-thumb:hover {
+    background: #999;
+}
