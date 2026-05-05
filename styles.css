@@ -362,26 +362,33 @@ footer p {
     margin-left: 0;
 }
 
+/* hide mobile toggle by default on desktop */
+.mobile-sidebar-toggle {
+    display: none;
+}
+
 /* Responsive Design */
 @media screen and (max-width: 768px) {
+    /* Completely disable sidebar on mobile views */
     .sidenav {
-        width: 100%;
-        position: relative;
-        height: auto;
-        padding: 20px;
+        display: none !important;
     }
+
+    /* ensure main content uses full width */
     .main {
         margin-left: 0;
         width: 100%;
     }
-    .sidenav h1 {
-        font-size: 1.5em;
-    }
-    .sidenav a {
-        padding: 10px;
-    }
+
+    /* hide any mobile toggles if present */
+    .mobile-sidebar-toggle,
     .sidebar-toggle {
-        display: none;
+        display: none !important;
+    }
+
+    .sidenav h1, .sidenav .contact-info, .sidenav a {
+        text-align: left;
+        padding-left: 20px;
     }
 }
 
