@@ -52,7 +52,7 @@ a:hover {
     padding-left: 1%;
     padding-right: 0%;
     overflow-x: hidden;
-    font-size: 1.2em;
+    font-size: 1.1em;
     transition: all 0.3s ease;
     z-index: 1000;
     display: flex;
@@ -71,7 +71,7 @@ a:hover {
 
 .sidenav h1 {
     color: var(--primary-emerald);
-    font-size: 1.2em;
+    font-size: 1.1em;
     text-align: left;
     margin-bottom: 20px;
     padding-left: 0%;
@@ -84,7 +84,7 @@ a:hover {
 }
 
 .sidenav.collapsed h1 {
-    font-size: 1.2em;
+    font-size: 1.1em;
     writing-mode: vertical-rl;
     text-orientation: mixed;
     transform: rotate(180deg);
@@ -121,7 +121,7 @@ a:hover {
 .menu a {
     padding: 5px 20px;
     text-decoration: none;
-    font-size: 1.2em;
+    font-size: 1.1em;
     color: var(--text-secondary);
     display: block;
     transition: all 0.3s;
