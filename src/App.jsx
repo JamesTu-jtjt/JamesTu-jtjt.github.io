@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { awards, experience, munYears, news, publications } from './data.js'
+import profileImage from '../Profile.JPG'
 
 const Arrow = () => <span aria-hidden="true">↗</span>
 
@@ -45,9 +46,15 @@ function SectionHead({ eyebrow, title, side }) {
 function Hero() {
   return (
     <main id="top">
+      <section className="marquee" aria-label="Research interests">
+        <div className="marquee-track">
+          <span>Reliable AI4SE</span><b>✦</b><span>Trustworthy AI</span><b>✦</b><span>LLM Reasoning &amp; Evaluation</span><b>✦</b><span>Human-AI Collaboration</span><b>✦</b>
+          <span>Reliable AI4SE</span><b>✦</b><span>Trustworthy AI</span><b>✦</b><span>LLM Reasoning &amp; Evaluation</span><b>✦</b><span>Human-AI Collaboration</span><b>✦</b>
+        </div>
+      </section>
       <section className="hero shell">
         <div className="hero-copy reveal">
-          <h1>Towards <br /><em>Reliable AI for Software Engineering.</em></h1>
+          <h1>Towards <em>Reliable AI </em><br />for <em>Software Engineering.</em></h1>
           <p className="hero-lede">I am Eng-Shen (James) Tu, currently a Computer Science PhD student at Cornell University. Previously, I was a Software Engineer at Appier, and I received my B.S. in Computer Science from National Cheng Kung University (NCKU).</p>
           <p className="hero-research"><strong>Research Interests:</strong> Reliable AI4SE, Trustworthy AI, LLM Reasoning &amp; Evaluation, Human-AI Collaboration.</p>
           <div className="hero-actions">
@@ -56,33 +63,29 @@ function Hero() {
           </div>
         </div>
         <div className="portrait-wrap reveal">
-          <div className="portrait-frame"><img src="/Profile.JPG" alt="James Tu playing guitar" /></div>
+          <div className="portrait-frame"><img src={profileImage} alt="James Tu playing guitar" /></div>
           <div className="outside-card">
             <p className="eyebrow">Outside research</p>
             <p>Volleyball, Music, Chess, Casual Model UN</p>
             <a href="?view=model-un">Explore my Model UN experience <span>→</span></a>
           </div>
         </div>
-        <div className="hero-index" aria-hidden="true"><span>Research</span><span>AI × Software Engineering</span></div>
+        <div className="hero-index" aria-hidden="true"><span>Research</span><span>Reliable AI × Software Engineering</span></div>
       </section>
 
-      <section className="marquee" aria-label="Research interests">
-        <div className="marquee-track">
-          <span>Reliable AI4SE</span><b>✦</b><span>Trustworthy AI</span><b>✦</b><span>LLM Reasoning &amp; Evaluation</span><b>✦</b><span>Human-AI Collaboration</span><b>✦</b>
-          <span>Reliable AI4SE</span><b>✦</b><span>Trustworthy AI</span><b>✦</b><span>LLM Reasoning &amp; Evaluation</span><b>✦</b><span>Human-AI Collaboration</span><b>✦</b>
-        </div>
-      </section>
     </main>
   )
 }
 
 function Education() {
   return (
-    <section id="education" className="section shell education-section">
-      <SectionHead eyebrow="Education" title="Education." />
-      <div className="education-list">
-        <article><time>2026 — 2031 expected</time><div><h3>PhD, Computer Science</h3><p>Cornell University</p></div></article>
-        <article><time>2019 — 2024</time><div><h3>BS, Computer Science &amp; Information Engineering</h3><p>National Cheng Kung University</p></div></article>
+    <section id="education" className="section education-section">
+      <div className="shell">
+        <SectionHead eyebrow="Education" title="Education." />
+        <div className="education-list">
+          <article><time>2026 — 2031 expected</time><div><h3>PhD, Computer Science</h3><p>Cornell University</p></div></article>
+          <article><time>2019 — 2024</time><div><h3>BS, Computer Science &amp; Information Engineering</h3><p>National Cheng Kung University</p></div></article>
+        </div>
       </div>
     </section>
   )
