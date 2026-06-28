@@ -181,7 +181,7 @@ function Footer() {
     <footer>
       <div className="shell footer-main">
         <p className="eyebrow">Get in touch</p>
-        <h2>I’m happy to chat about PhD applications,<br />research, or just to meet.</h2>
+        <h3>I’m happy to chat about PhD applications,<br />research, or just to meet.</h3>
         <a className="footer-email" href="mailto:ejt82@cornell.edu">ejt82@cornell.edu <Arrow /></a>
       </div>
       <div className="shell footer-bottom">
