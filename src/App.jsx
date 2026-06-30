@@ -70,7 +70,7 @@ function Hero() {
             <a href="?view=model-un">Explore my Model UN experience <span>→</span></a>
           </div>
         </div>
-        <div className="hero-index" aria-hidden="true"><span>Research</span><span>Reliable AI × Software Engineering</span></div>
+        {/* <div className="hero-index" aria-hidden="true"><span>Research</span><span>Reliable AI × Software Engineering</span></div> */}
       </section>
 
     </main>
