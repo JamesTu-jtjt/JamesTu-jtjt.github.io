@@ -20,8 +20,8 @@ function Header() {
 
   return (
     <header className="site-header">
-      <a className="wordmark" href="#top" aria-label="James Tu, home">
-        <span className="wordmark-mark">JT</span><span>Eng-Shen (James) Tu</span>
+      <a className="wordmark" href="#top" aria-label="James Tu 杜霙笙, home">
+        <span className="wordmark-mark">JT</span><span>James Tu 杜霙笙</span>
       </a>
       <button className="menu-button" onClick={() => setOpen(!open)} aria-expanded={open} aria-controls="site-nav">
         <span>{open ? 'Close' : 'Menu'}</span>
@@ -54,8 +54,8 @@ function Hero() {
       </section>
       <section className="hero shell">
         <div className="hero-copy reveal">
-          <h1>Towards <em>Reliable AI </em><br />for <em>Software Engineering.</em></h1>
-          <p className="hero-lede">I am Eng-Shen (James) Tu, currently a Computer Science PhD student at Cornell University. Previously, I was a Software Engineer at Appier, and I received my B.S. in Computer Science from National Cheng Kung University (NCKU).</p>
+          <h1>About <em> James Tu </em></h1>
+          <p className="hero-lede">My name is 杜霙笙, but most friends just call me James. I am currently a Computer Science PhD student at Cornell University. Previously, I was a Software Engineer at Appier, and I received my B.S. in Computer Science from National Cheng Kung University (NCKU).</p>
           <p className="hero-research"><strong>Research Interests:</strong> Reliable AI4SE, Trustworthy AI, LLM Reasoning &amp; Evaluation, Human-AI Collaboration.</p>
           <div className="hero-actions">
             <a className="button primary" href="#publications">View publications <span>↓</span></a>
