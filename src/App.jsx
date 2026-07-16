@@ -56,6 +56,7 @@ function Hero() {
         <div className="hero-copy reveal">
           <h1>About <em> James Tu </em></h1>
           <p className="hero-lede">My name is 杜霙笙, but most friends just call me James. I am currently a Computer Science PhD student at Cornell University. Previously, I was a Software Engineer at Appier, and I received my B.S. in Computer Science from National Cheng Kung University (NCKU).</p>
+          <p className="hero-lede">I'm passionate about investigating reliable and trustworthy AI that bridges research and real-world impact in AI for Software Engineering. With experience across academia and industry, I specialize in agentic workflow design, software quality assurance, and AI application reliability research. </p>
           <p className="hero-research"><strong>Research Interests:</strong> Reliable AI4SE, Trustworthy AI, LLM Reasoning &amp; Evaluation, Human-AI Collaboration.</p>
           <div className="hero-actions">
             <a className="button primary" href="#publications">View publications <span>↓</span></a>
