@@ -78,7 +78,7 @@ export const experience = [
 ]
 
 export const news = [
-  ['Aug 2026', 'Started my PhD journey at Cornell University.'],
+  ['Aug 2026', 'Started my PhD at Cornell, happy to meet if you\'re in Ithaca!'],
   ['Jul 2026', 'OmniCode presented at the ACL 2026.'],
   ['Jun 2026', 'Concluding my time at Appier on June 30.'],
   ['May 2026', 'Grateful to be re-invited to MUN Society Taiwan as Managing Supervisor.'],
