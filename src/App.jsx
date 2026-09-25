@@ -292,7 +292,7 @@ function Footer() {
       <div className="shell footer-main">
         <p className="eyebrow">Get in touch</p>
         <h3>Happy to meet and connect to chat about AI and research. <br />Feel free to email or DM me on LinkedIn! </h3>
-        <a className="footer-email" href="mailto:ejt82@cornell.edu">ejt82@cornell.edu <Arrow /></a>
+        <a className="footer-email" href="mailto:james2@cs.cornell.edu">james2@cs.cornell.edu <Arrow /></a>
       </div>
       <div className="shell footer-bottom">
         <span>© {new Date().getFullYear()} Eng-Shen (James) Tu</span>
