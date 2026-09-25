@@ -4,11 +4,114 @@ import profileImage from '../Profile.JPG'
 
 const Arrow = () => <span aria-hidden="true">↗</span>
 
+function useTheme() {
+  const [theme, setTheme] = useState(() => document.documentElement.dataset.theme || 'light')
+
+  useEffect(() => {
+    const system = window.matchMedia('(prefers-color-scheme: dark)')
+    const syncPreference = () => {
+      let saved
+      try { saved = localStorage.getItem('james-tu-theme') } catch { /* Storage is optional. */ }
+      setTheme(saved === 'light' || saved === 'dark' ? saved : system.matches ? 'dark' : 'light')
+    }
+    const syncStorage = (event) => {
+      if (event.key === 'james-tu-theme' || event.key === null) syncPreference()
+    }
+    system.addEventListener('change', syncPreference)
+    window.addEventListener('storage', syncStorage)
+    return () => {
+      system.removeEventListener('change', syncPreference)
+      window.removeEventListener('storage', syncStorage)
+    }
+  }, [])
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme
+    document.documentElement.style.colorScheme = theme
+    document.querySelector('meta[name="theme-color"]').content = theme === 'dark' ? '#101316' : '#f4f1e9'
+  }, [theme])
+
+  const toggleTheme = () => {
+    const next = theme === 'dark' ? 'light' : 'dark'
+    try { localStorage.setItem('james-tu-theme', next) } catch { /* Keep the toggle usable without storage. */ }
+    setTheme(next)
+  }
+  return { theme, toggleTheme }
+}
+
+function ThemeToggle({ theme, toggleTheme }) {
+  return (
+    <button className="theme-toggle" onClick={toggleTheme} aria-label="Dark theme" aria-pressed={theme === 'dark'} title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`}>
+      <span className="theme-toggle-thumb" aria-hidden="true" />
+      <svg className="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" aria-hidden="true"><circle cx="12" cy="12" r="3.5" /><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5" /></svg>
+      <svg className="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M20.5 13.1A8.5 8.5 0 0 1 10.9 3.5a8.5 8.5 0 1 0 9.6 9.6Z" /></svg>
+    </button>
+  )
+}
+
 function ExternalLink({ href, children, className = '' }) {
   return <a className={className} href={href} target="_blank" rel="noreferrer">{children} <Arrow /></a>
 }
 
-function Header() {
+function useScrollMotion() {
+  useEffect(() => {
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (reducedMotion || !('IntersectionObserver' in window)) return undefined
+
+    const selector = [
+      '.reveal',
+      '.education-list article',
+      '.news-item',
+      '.experience-row',
+      '.award',
+      '.publication-footer',
+      '.footer-main > *',
+      '.mun-hero > *',
+      '.mun-bio-grid > div',
+      '.mun-years article',
+      '.role-grid > div',
+    ].join(',')
+    const staggeredParents = '.education-list, .news-list, .experience-list, .publication-list, .recognition-grid > div, .footer-main, .mun-hero, .mun-years, .role-grid'
+    const tracked = new WeakSet()
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return
+        entry.target.classList.add('visible')
+        observer.unobserve(entry.target)
+      })
+    }, { threshold: 0, rootMargin: '0px 0px -20px' })
+
+    const register = (root) => {
+      const elements = []
+      if (root instanceof Element && root.matches(selector)) elements.push(root)
+      if (root.querySelectorAll) elements.push(...root.querySelectorAll(selector))
+      elements.forEach((element) => {
+        if (tracked.has(element)) return
+        tracked.add(element)
+        element.classList.add('scroll-reveal')
+        const parent = element.parentElement
+        if (parent?.matches(staggeredParents)) {
+          const index = [...parent.children].indexOf(element)
+          element.style.setProperty('--reveal-delay', `${Math.min(index, 7) * 55}ms`)
+        }
+        observer.observe(element)
+      })
+    }
+
+    register(document)
+    document.documentElement.classList.add('motion-ready')
+    const mutations = new MutationObserver((records) => records.forEach((record) => record.addedNodes.forEach(register)))
+    mutations.observe(document.body, { childList: true, subtree: true })
+
+    return () => {
+      observer.disconnect()
+      mutations.disconnect()
+      document.documentElement.classList.remove('motion-ready')
+    }
+  }, [])
+}
+
+function Header({ theme, toggleTheme }) {
   const [open, setOpen] = useState(false)
   const links = [['education', 'Education'], ['notes', 'Updates'], ['experience', 'Experience'], ['publications', 'Publications']]
 
@@ -23,13 +126,16 @@ function Header() {
       <a className="wordmark" href="#top" aria-label="James Tu 杜霙笙, home">
         <span className="wordmark-mark">JT</span><span>James Tu 杜霙笙</span>
       </a>
-      <button className="menu-button" onClick={() => setOpen(!open)} aria-expanded={open} aria-controls="site-nav">
-        <span>{open ? 'Close' : 'Menu'}</span>
-      </button>
-      <nav id="site-nav" className={open ? 'nav-open' : ''} aria-label="Main navigation">
+      <nav id="site-nav" className={open ? 'nav-open' : ''} aria-label="Main navigation" onKeyDown={(event) => { if (event.key === 'Escape') setOpen(false) }}>
         {links.map(([href, label]) => <a key={href} href={`#${href}`} onClick={() => setOpen(false)}>{label}</a>)}
         <a href="https://www.linkedin.com/in/james-tu-ncku/" target="_blank" rel="noreferrer" className="nav-cta">Say hello <Arrow /></a>
       </nav>
+      <div className="header-controls">
+        <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
+        <button className="menu-button" onClick={() => setOpen(!open)} aria-expanded={open} aria-controls="site-nav">
+          <span>{open ? 'Close' : 'Menu'}</span>
+        </button>
+      </div>
     </header>
   )
 }
@@ -48,22 +154,25 @@ function Hero() {
     <main id="top">
       <section className="marquee" aria-label="Research interests">
         <div className="marquee-track">
-          <span>Reliable AI4SE</span><b>✦</b><span>Trustworthy AI</span><b>✦</b><span>LLM Reasoning &amp; Evaluation</span><b>✦</b><span>Human-AI Collaboration</span><b>✦</b>
-          <span>Reliable AI4SE</span><b>✦</b><span>Trustworthy AI</span><b>✦</b><span>LLM Reasoning &amp; Evaluation</span><b>✦</b><span>Human-AI Collaboration</span><b>✦</b>
+          <span>Agentic Workflow Design</span><b>✦</b><span>AI for Software Engineering</span><b>✦</b><span>Trustworthy AI</span><b>✦</b><span>LLM Reasoning &amp; Evaluation</span><b>✦</b><span>Human-AI Interaction</span><b>✦</b><span>Quality Assurance</span><b>✦</b>
+          <span>Agentic Workflow Design</span><b>✦</b><span>AI for Software Engineering</span><b>✦</b><span>Trustworthy AI</span><b>✦</b><span>LLM Reasoning &amp; Evaluation</span><b>✦</b><span>Human-AI Interaction</span><b>✦</b><span>Quality Assurance</span><b>✦</b>
+          <span>Agentic Workflow Design</span><b>✦</b><span>AI for Software Engineering</span><b>✦</b><span>Trustworthy AI</span><b>✦</b><span>LLM Reasoning &amp; Evaluation</span><b>✦</b><span>Human-AI Interaction</span><b>✦</b><span>Quality Assurance</span><b>✦</b>
         </div>
       </section>
       <section className="hero shell">
         <div className="hero-copy reveal">
-          <h1>About <em> James Tu </em></h1>
+          <h1><span className="hero-title-intro">About </span><em> James Tu </em></h1>
           <p className="hero-lede">My name is 杜霙笙, but most friends just call me James. I am currently a Computer Science PhD student at Cornell University working with Dr. <a href="https://www.cs.cornell.edu/~saikatd/" target="_blank" rel="noreferrer" style={{color: 'inherit', textDecoration: 'underline'}}>Saikat Dutta</a>. Previously, I was a Software Engineer at Appier, and I received my B.S. in Computer Science from National Cheng Kung University (NCKU).</p>
           <p className="hero-lede">I'm passionate about investigating reliable and trustworthy AI that bridges research and real-world impact in Software Engineering. With experience across academia and industry, I specialize in agentic workflow design, software quality assurance, and AI application reliability research. </p>
-          <p className="hero-research"><strong>Research Interests:</strong> AI4SE, Trustworthy AI, LLM Reasoning &amp; Evaluation, Human-AI Collaboration.</p>
+          <p className="hero-research"><strong>Research Interests:</strong> AI4SE, Quality Assurance for AI.</p>
           <div className="hero-actions">
             <a className="button primary" href="#publications">View publications <span>↓</span></a>
             <ExternalLink className="button text" href="https://scholar.google.com/citations?user=Ec3gA-EAAAAJ&hl=en&oi=sra">Google Scholar</ExternalLink>
           </div>
         </div>
         <div className="portrait-wrap reveal">
+          <div className="portrait-orbit" aria-hidden="true"><span /></div>
+          <span className="portrait-spark" aria-hidden="true">✦</span>
           <div className="portrait-frame"><img src={profileImage} alt="James Tu playing guitar" /></div>
           <div className="outside-card">
             <p className="eyebrow">Outside research</p>
@@ -182,7 +291,7 @@ function Footer() {
     <footer>
       <div className="shell footer-main">
         <p className="eyebrow">Get in touch</p>
-        <h3>I’m happy to chat about PhD applications,<br />research, or just to meet.</h3>
+        <h3>Happy to meet and connect to chat about AI and research. <br />Feel free to email or DM me on LinkedIn! </h3>
         <a className="footer-email" href="mailto:ejt82@cornell.edu">ejt82@cornell.edu <Arrow /></a>
       </div>
       <div className="shell footer-bottom">
@@ -194,10 +303,10 @@ function Footer() {
   )
 }
 
-function ModelUN() {
+function ModelUN({ theme, toggleTheme }) {
   return (
     <div className="mun-page">
-      <header className="site-header"><a className="wordmark" href="/"><span className="wordmark-mark">JT</span><span>James Tu</span></a><a href="/" className="back-link">← Back home</a></header>
+      <header className="site-header"><a className="wordmark" href="/"><span className="wordmark-mark">JT</span><span>James Tu</span></a><div className="header-controls"><a href="/" className="back-link">← Back home</a><ThemeToggle theme={theme} toggleTheme={toggleTheme} /></div></header>
       <main>
         <section className="mun-hero shell"><p className="eyebrow">Beyond the terminal · 2017—Present</p><h1>Model United<br /><em>Nations.</em></h1><p>From delegate to chair, teacher, Director, and now Managing Supervisor at MUN Society Taiwan. MUN taught me to listen carefully, make complex ideas legible, and help a room do its best thinking together.</p></section>
         <section className="mun-bio">
@@ -213,7 +322,7 @@ function ModelUN() {
           <div className="mun-intro"><p className="eyebrow">2017 — 2024</p><h2>Conferences attended</h2></div>
           <div className="mun-years">{munYears.map(([year, items]) => <article key={year}><h3>{year}</h3><ul>{items.map(item => <li key={item}>{item}</li>)}</ul></article>)}</div>
         </section>
-        <section className="mun-roles"><div className="shell"><SectionHead eyebrow="Other roles & contributions" title="Teaching the next room." /><div className="role-grid">
+        <section className="mun-roles"><div className="shell"><SectionHead eyebrow="Other roles & contributions" title="Teaching and Service." /><div className="role-grid">
           {['Managing Supervisor · MUN Society Taiwan (May 2026–Present)','Former Director · MUN Society Taiwan','Instructor · National Tainan Junior College of Nursing (2023–2024)','Instructor · Tainan Chang Jung Senior High School (2019–2022)','Director of Academics · Phoenix MUN Club, NCKU','Founding Member & Head of Academics · FLYMUN','4th Head of Academics · Fudan High School MUN Club','Guest speaker at five high schools across Taiwan','Organizer and speaker for workshops on public speaking, drafting, and debate'].map((role, i) => <div key={role}><span>0{i + 1}</span><p>{role}</p></div>)}
         </div></div></section>
       </main>
@@ -222,16 +331,13 @@ function ModelUN() {
   )
 }
 
-function Home() {
-  useEffect(() => {
-    const observer = new IntersectionObserver(entries => entries.forEach(entry => entry.isIntersecting && entry.target.classList.add('visible')), { threshold: 0.08 })
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el))
-    return () => observer.disconnect()
-  }, [])
-  return <><Header /><Hero /><Education /><Updates /><Experience /><Publications /><Recognition /><Footer /></>
+function Home({ theme, toggleTheme }) {
+  return <><Header theme={theme} toggleTheme={toggleTheme} /><Hero /><Education /><Updates /><Experience /><Publications /><Recognition /><Footer /></>
 }
 
 export default function App() {
+  const { theme, toggleTheme } = useTheme()
+  useScrollMotion()
   const isModelUN = new URLSearchParams(window.location.search).get('view') === 'model-un'
-  return isModelUN ? <ModelUN /> : <Home />
+  return isModelUN ? <ModelUN theme={theme} toggleTheme={toggleTheme} /> : <Home theme={theme} toggleTheme={toggleTheme} />
 }

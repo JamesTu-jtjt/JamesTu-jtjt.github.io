@@ -4,6 +4,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#f4f1e9" />
+    <script>
+      // Set the theme before the first paint to avoid a flash on reload.
+      (() => {
+        let theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+        try {
+          const saved = localStorage.getItem('james-tu-theme')
+          if (saved === 'light' || saved === 'dark') theme = saved
+        } catch { /* System preference still works when storage is unavailable. */ }
+        document.documentElement.dataset.theme = theme
+        document.documentElement.style.colorScheme = theme
+        document.querySelector('meta[name="theme-color"]').content = theme === 'dark' ? '#101316' : '#f4f1e9'
+      })()
+    </script>
     <meta name="description" content="Eng-Shen (James) Tu — Cornell CS PhD student and former Appier software engineer working on reliable AI for software engineering." />
     <meta property="og:title" content="杜霙笙 James Tu" />
     <meta property="og:description" content="Software engineer and researcher building reliable AI systems for software development." />
