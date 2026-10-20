@@ -162,7 +162,7 @@ function Hero() {
       <section className="hero shell">
         <div className="hero-copy reveal">
           <h1><span className="hero-title-intro">About </span><em> James Tu </em></h1>
-          <p className="hero-lede">My name is 杜霙笙, but most friends just call me James. I am currently a Computer Science PhD student at Cornell University working with Dr. <a href="https://www.cs.cornell.edu/~saikatd/" target="_blank" rel="noreferrer" style={{color: 'inherit', textDecoration: 'underline'}}>Saikat Dutta</a>. Previously, I was a Software Engineer at Appier, and I received my B.S. in Computer Science from National Cheng Kung University (NCKU).</p>
+          <p className="hero-lede">My name is 杜霙笙, but most friends just call me James. I am currently a Computer Science PhD student at Cornell University working with Assistant Professor <a href="https://www.cs.cornell.edu/~saikatd/" target="_blank" rel="noreferrer" style={{color: 'inherit', textDecoration: 'underline'}}>Saikat Dutta</a>. Previously, I was a Software Engineer at Appier, and I received my B.S. in Computer Science from National Cheng Kung University (NCKU) in Taiwan.</p>
           <p className="hero-lede">I'm passionate about investigating reliable and trustworthy AI that bridges research and real-world impact in Software Engineering. With experience across academia and industry, I specialize in agentic workflow design, software quality assurance, and AI application reliability research. </p>
           <p className="hero-research"><strong>Research Interests:</strong> AI4SE, Quality Assurance for AI.</p>
           <div className="hero-actions">
