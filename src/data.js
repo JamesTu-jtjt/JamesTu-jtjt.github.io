@@ -34,6 +34,12 @@ export const publications = [
 
 export const experience = [
   {
+    type: 'work', dates: 'Fall 2026', role: 'Head TA', org: 'Cornell University', place: 'Ithaca, NY',
+    teaching: true,
+    copy: 'CS4820/5820 Analysis of Algorithms.',
+    tags: ['Teaching', 'Algorithms'],
+  },
+  {
     type: 'work', dates: 'Jul 2025 — Jun 2026', role: 'Software Engineer II', org: 'Appier', place: 'Taipei, Taiwan',
     bullets: [
       'Developed QAgent, an LLM-powered test-planning harness used company-wide, increasing test planning throughput by 10x and aligning cross-team quality context; promoted from intern to level 2 software engineer within 3 months.',

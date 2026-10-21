@@ -113,7 +113,7 @@ function useScrollMotion() {
 
 function Header({ theme, toggleTheme }) {
   const [open, setOpen] = useState(false)
-  const links = [['education', 'Education'], ['notes', 'Updates'], ['experience', 'Experience'], ['publications', 'Publications']]
+  const links = [['education', 'Education'], ['notes', 'Updates'], ['experience', 'Experience'], ['teaching', 'Teaching'], ['publications', 'Publications']]
 
   useEffect(() => {
     const close = () => setOpen(false)
@@ -224,6 +224,30 @@ function Publications() {
   )
 }
 
+function ExperienceRow({ item }) {
+  return (
+    <article className="experience-row">
+      <time>{item.dates}</time>
+      <div><h3>{item.role}</h3><p className="org">{item.org} <span>· {item.place}</span></p></div>
+      <div className="experience-copy">
+        {item.bullets ? <ul>{item.bullets.map(bullet => <li key={bullet}>{bullet}</li>)}</ul> : <p>{item.copy}</p>}
+        <div className="tag-row">{item.tags.map(tag => <span key={tag}>{tag}</span>)}</div>
+      </div>
+    </article>
+  )
+}
+
+function Teaching() {
+  return (
+    <section id="teaching" className="section shell">
+      <SectionHead eyebrow="Teaching" title="Teaching experience." />
+      <div className="experience-list">
+        {experience.filter(item => item.teaching).map(item => <ExperienceRow item={item} key={`${item.org}-${item.role}`} />)}
+      </div>
+    </section>
+  )
+}
+
 function Experience() {
   const [filter, setFilter] = useState('all')
   const shown = filter === 'all' ? experience : experience.filter(item => item.type === filter)
@@ -234,16 +258,7 @@ function Experience() {
         {['all', 'research', 'work'].map(item => <button className={filter === item ? 'active' : ''} key={item} onClick={() => setFilter(item)}>{item}</button>)}
       </div>
       <div className="experience-list">
-        {shown.map(item => (
-          <article className="experience-row" key={`${item.org}-${item.role}`}>
-            <time>{item.dates}</time>
-            <div><h3>{item.role}</h3><p className="org">{item.org} <span>· {item.place}</span></p></div>
-            <div className="experience-copy">
-              {item.bullets ? <ul>{item.bullets.map(bullet => <li key={bullet}>{bullet}</li>)}</ul> : <p>{item.copy}</p>}
-              <div className="tag-row">{item.tags.map(tag => <span key={tag}>{tag}</span>)}</div>
-            </div>
-          </article>
-        ))}
+        {shown.map(item => <ExperienceRow item={item} key={`${item.org}-${item.role}`} />)}
       </div>
     </section>
   )
@@ -332,7 +347,7 @@ function ModelUN({ theme, toggleTheme }) {
 }
 
 function Home({ theme, toggleTheme }) {
-  return <><Header theme={theme} toggleTheme={toggleTheme} /><Hero /><Education /><Updates /><Experience /><Publications /><Recognition /><Footer /></>
+  return <><Header theme={theme} toggleTheme={toggleTheme} /><Hero /><Education /><Updates /><Experience /><Teaching /><Publications /><Recognition /><Footer /></>
 }
 
 export default function App() {

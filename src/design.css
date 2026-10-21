@@ -223,7 +223,12 @@ footer::before { content: ''; position: absolute; width: 360px; height: 360px; b
 }
 @media (max-width:1100px) {
   .site-header { gap: 18px; }
-  .site-header nav { gap: 18px; font-size: 13px; }
+  .menu-button { display: block; cursor: pointer; }
+  .header-controls { margin-left: auto; }
+  .site-header nav { position: absolute; top: 81px; left: 0; right: 0; display: none; flex-direction: column; align-items: stretch; margin-left: 0; gap: 0; padding: 20px; background: var(--paper); border-bottom: 1px solid var(--line); font-size: 13px; }
+  .site-header nav.nav-open { display: flex; }
+  .site-header nav a { padding: 14px 0; }
+  .site-header .nav-cta { border: 0; border-radius: 0; }
   .hero::before { right: -32px; }
   .experience-row { grid-template-columns: 120px minmax(190px,.8fr) 1.4fr; gap: 24px; }
 }
