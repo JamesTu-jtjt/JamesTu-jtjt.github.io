@@ -32,13 +32,24 @@ export const publications = [
   },
 ]
 
-export const experience = [
+export const teachingAndService = [
   {
-    type: 'work', dates: 'Fall 2026', role: 'Head TA', org: 'Cornell University', place: 'Ithaca, NY',
-    teaching: true,
+    dates: 'Fall 2026', role: 'Head TA', org: 'Cornell University', place: 'Ithaca, NY',
     copy: 'CS4820/5820 Analysis of Algorithms.',
     tags: ['Teaching', 'Algorithms'],
   },
+  {
+    dates: '2024 — 2026', role: 'Group Leader', org: 'GDG OnCampus NYCU (Agentic AI Research Group)',
+    copy: 'Led weekly seminars on Agentic AI for undergraduate students, focusing on Context Retrieval, Theory of Mind (ToM), and Strategic Reasoning (e.g., Bayesian Inference in game-based evaluations like Mafia and Among Us).',
+    tags: ['Agentic AI', 'Teaching', 'Leadership'],
+  },
+  {
+    dates: '2022, 2024', role: 'Head TA', org: 'Harvard Taiwan Leadership Conference',
+    tags: ['Teaching', 'Leadership'],
+  },
+]
+
+export const experience = [
   {
     type: 'work', dates: 'Jul 2025 — Jun 2026', role: 'Software Engineer II', org: 'Appier', place: 'Taipei, Taiwan',
     bullets: [

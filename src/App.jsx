@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { awards, experience, munYears, news, publications } from './data.js'
+import { awards, experience, munYears, news, publications, teachingAndService } from './data.js'
 import profileImage from '../Profile.JPG'
 
 const Arrow = () => <span aria-hidden="true">↗</span>
@@ -113,7 +113,7 @@ function useScrollMotion() {
 
 function Header({ theme, toggleTheme }) {
   const [open, setOpen] = useState(false)
-  const links = [['education', 'Education'], ['notes', 'Updates'], ['experience', 'Experience'], ['teaching', 'Teaching'], ['publications', 'Publications']]
+  const links = [['education', 'Education'], ['notes', 'Updates'], ['experience', 'Experience'], ['teaching', 'Teaching and service'], ['publications', 'Publications']]
 
   useEffect(() => {
     const close = () => setOpen(false)
@@ -228,21 +228,21 @@ function ExperienceRow({ item }) {
   return (
     <article className="experience-row">
       <time>{item.dates}</time>
-      <div><h3>{item.role}</h3><p className="org">{item.org} <span>· {item.place}</span></p></div>
+      <div><h3>{item.role}</h3><p className="org">{item.org}{item.place && <span> · {item.place}</span>}</p></div>
       <div className="experience-copy">
-        {item.bullets ? <ul>{item.bullets.map(bullet => <li key={bullet}>{bullet}</li>)}</ul> : <p>{item.copy}</p>}
+        {item.bullets ? <ul>{item.bullets.map(bullet => <li key={bullet}>{bullet}</li>)}</ul> : item.copy && <p>{item.copy}</p>}
         <div className="tag-row">{item.tags.map(tag => <span key={tag}>{tag}</span>)}</div>
       </div>
     </article>
   )
 }
 
-function Teaching() {
+function TeachingAndService() {
   return (
     <section id="teaching" className="section shell">
-      <SectionHead eyebrow="Teaching" title="Teaching experience." />
+      <SectionHead eyebrow="Teaching and service" title="Teaching and service." />
       <div className="experience-list">
-        {experience.filter(item => item.teaching).map(item => <ExperienceRow item={item} key={`${item.org}-${item.role}`} />)}
+        {teachingAndService.map(item => <ExperienceRow item={item} key={`${item.org}-${item.role}`} />)}
       </div>
     </section>
   )
@@ -282,10 +282,8 @@ function Updates() {
 
 function Recognition() {
   const leadership = [
-    ['2024 — Present', 'Group Leader', 'GDG OnCampus NYCU · Agentic AI Research Group', 'Led weekly seminars on Agentic AI for undergraduate students, focusing on Context Retrieval, Theory of Mind (ToM), and Strategic Reasoning (e.g., Bayesian Inference in game-based evaluations like Mafia and Among Us).'],
     ['May 2026 — Present', 'Managing Supervisor', 'MUN Society Taiwan'],
     ['2021 — 2025', 'Director', 'MUN Society Taiwan'],
-    ['2022, 2024', 'Head Teaching Assistant', 'Harvard Undergraduate Taiwan Leadership Conference'],
     ['2022 — 2024', 'Head Coach', 'NCKU Statistics Women’s Volleyball'],
     ['2024', 'Assistant Chair', 'Harvard WorldMUN'],
     ['2021 — 2022', 'Director of Research', 'NCKU Blockchain Club'],
@@ -347,7 +345,7 @@ function ModelUN({ theme, toggleTheme }) {
 }
 
 function Home({ theme, toggleTheme }) {
-  return <><Header theme={theme} toggleTheme={toggleTheme} /><Hero /><Education /><Updates /><Experience /><Teaching /><Publications /><Recognition /><Footer /></>
+  return <><Header theme={theme} toggleTheme={toggleTheme} /><Hero /><Education /><Updates /><Experience /><TeachingAndService /><Publications /><Recognition /><Footer /></>
 }
 
 export default function App() {
